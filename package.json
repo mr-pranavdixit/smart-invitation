@@ -1,0 +1,29 @@
+{
+  "name": "webcam-base64-streaming",
+  "version": "1.0.0",
+  "description": "Webcam live streaming with WebSockets and Base64",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexcambose/webcam-base64-streaming.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alexcambose/webcam-base64-streaming/issues"
+  },
+  "homepage": "https://github.com/alexcambose/webcam-base64-streaming#readme",
+  "dependencies": {
+    "concurrently": "^5.3.0",
+    "express": "^4.16.3",
+    "http-proxy": "^1.18.1",
+    "recordrtc": "^5.6.1",
+    "rtcmulticonnection": "^2.2.5",
+    "socket.io": "^4.7.2"
+  }
+}

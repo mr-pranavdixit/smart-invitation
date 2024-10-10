@@ -1,0 +1,77 @@
+<html>
+<head>
+  <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" type='text/css' href="/css/bootstrap.css">
+  <link rel="stylesheet" href="https://cdn.plyr.io/3.6.2/plyr.css" />
+
+    <title>Streamer</title>
+</head>
+<body>
+  <div class="container-fluid mb-4">
+  <div class=" form-group">
+        <label for="audioSource">Audio input source: </label><select class="form-control form-control-sm" id="audioSource"></select>
+    </div>
+
+    <div class=" form-group">
+        <label for="audioOutput">Audio output destination: </label><select class="form-control form-control-sm" id="audioOutput"></select>
+    </div>
+
+    <div class=" form-group">
+        <label for="videoSource">Video source: </label><select class="form-control form-control-sm" id="videoSource"></select>
+    </div>
+    </div>
+    <div class="container-fluid form-group">
+  <video id="player" width="520" height="264" playsinline autoplay muted></video>
+ </div>
+
+<div class="container-fluid mt-4 form-group">
+  <div class="row">
+    <div class="col-md-3 col-sm-3">
+    <button id="start" class="btn btn-info mb-4">Start camera</button>
+    </div>
+    <div class="col-md-3 col-sm-3">
+    <button id="record" class="btn btn-danger mb-4" disabled>Start Recording</button>
+
+    </div>
+    <div class="col-md-3 col-sm-3">
+    <button id="download" class="btn btn-success mb-4" disabled>Download</button>
+    </div>
+    <div class="col-md-3 col-sm-3">
+    <button id="photo" class="btn btn-secondary btn-outline-success mb-4" >take picture</button>
+    </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-md-6 ">
+        <canvas  id="canvas" width="640" height="480"></canvas>
+      </div>
+    </div>
+</div>
+<div><ul id="messages"></ul></div>
+<div>
+       <h4>Media Stream Constraints options</h4>
+       <p>Echo cancellation: <input  type="checkbox" id="echoCancellation"></p>
+   </div>
+
+   <div>
+<div>
+    <span id="errorMsg"></span>
+</div>
+<script src="/socket.io/socket.io.js"></script>
+<script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+<!-- <script src="/node_modules/rtcmulticonnection/dist/RTCMultiConnection.min.js"></script> -->
+<script src="/broadcast.js"></script>
+<script src="js/jquery.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+<script src="https://cdn.plyr.io/3.6.2/plyr.js"></script>
+<script src="https://cdn.plyr.io/3.6.2/plyr.polyfilled.js"></script>
+<script src="https://cdn.rawgit.com/video-dev/hls.js/18bb552/dist/hls.min.js"></script>
+<script src="https://www.WebRTC-Experiment.com/RecordRTC.js"></script>
+<script type="text/javascript">
+const player = new Plyr("#player");
+</script>
+
+</body>
+</html>
