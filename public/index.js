@@ -33,9 +33,7 @@ wsServer.on('connection', (ws, req) => {
 // HTTP stuff
 
 app.use(express.static('public'));
-app.get('/', (req, res) => res.sendFile(path.resolve(__dirname, './index.html')));
-app.get('/live_wedding', (req, res) => res.sendFile(path.resolve(__dirname, './index1.html')));
-app.get('/streamer', (req, res) => res.sendFile(path.resolve(__dirname, './streamer.html')));
+
 
 
 // app.get('/', (req, res) => {

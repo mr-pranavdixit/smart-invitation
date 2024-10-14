@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require('path');
 const app = express();
 // const router = express.Router();
 
@@ -8,7 +9,22 @@ const http = require("http");
 const server = http.createServer(app);
 
 const io = require("socket.io")(server);
-app.use(express.static(__dirname + "/public"));
+// Serve static files from the 'public' directory
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Route to serve index1.html for the live wedding stream
+app.get('/live_wedding', (req, res) => {
+  res.sendFile(path.resolve(__dirname, './public/index1.html'));
+});
+
+// Other routes
+app.get('/', (req, res) => {
+  res.sendFile(path.resolve(__dirname, './public/index.html'));
+});
+
+app.get('/streamer', (req, res) => {
+  res.sendFile(path.resolve(__dirname, './public/streamer.html'));
+});
 
 io.sockets.on("error", e => console.log(e));
 server.listen(process.env.PORT || port, () => console.log(`Server is running on port ${port}`));
