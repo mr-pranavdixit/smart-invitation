@@ -5,7 +5,27 @@ document.addEventListener("DOMContentLoaded", function () {
       iceServers: [
           {
               urls: ["stun:stun.l.google.com:19302"]
-          }
+          },
+          {
+            urls: "turn:global.relay.metered.ca:80",
+            username: "d70fb4d4b0b9e714fb751684",
+            credential: "QNJCCPow/ILxCHtk",
+          },
+          {
+            urls: "turn:global.relay.metered.ca:80?transport=tcp",
+            username: "d70fb4d4b0b9e714fb751684",
+            credential: "QNJCCPow/ILxCHtk",
+          },
+          {
+            urls: "turn:global.relay.metered.ca:443",
+            username: "d70fb4d4b0b9e714fb751684",
+            credential: "QNJCCPow/ILxCHtk",
+          },
+          {
+            urls: "turns:global.relay.metered.ca:443?transport=tcp",
+            username: "d70fb4d4b0b9e714fb751684",
+            credential: "QNJCCPow/ILxCHtk",
+          },
       ]
   };
 
@@ -116,6 +136,14 @@ async function start() {
 function gotStream(stream) {
   window.stream = stream;
   videoElement.srcObject = stream;
+  // Ensure audio tracks are part of the stream
+  const audioTracks = stream.getAudioTracks();
+  if (audioTracks.length > 0) {
+    console.log('Using audio device: ' + audioTracks[0].label);
+  } else {
+    console.error('No audio tracks found in the stream');
+    alert('No audio input detected. Please check your microphone settings.');
+  }
   // Enable the "Start Recording" button once the stream is active
   document.querySelector('button#record').disabled = false;
   
