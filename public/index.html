@@ -484,6 +484,65 @@
     <script src="js/contact-form-script.js"></script>
     <script src="js/custom.js"></script>
 	<script type="text/javascript" src="https://addevent.com/libs/atc/1.6.1/atc.min.js" async defer></script>
+	<script>
+		document.addEventListener('contextmenu', function (event) {
+			event.preventDefault(); // Disable right-click
+		},{ passive: false });
+	</script>
+	<script>
+		document.addEventListener('keydown', function(event) {
+			// Block F12
+			if (event.key === 'F12') {
+				event.preventDefault();
+			}
+			// Block Ctrl+Shift+I (Inspect Element)
+			if (event.ctrlKey && event.shiftKey && event.key === 'I') {
+				event.preventDefault();
+			}
+			// Block Ctrl+Shift+J (Console)
+			if (event.ctrlKey && event.shiftKey && event.key === 'J') {
+				event.preventDefault();
+			}
+			// Block Ctrl+U (View Page Source)
+			if (event.ctrlKey && event.key === 'U') {
+				event.preventDefault();
+			}
+		},{ passive: false });
+
+	</script>
+	<script>
+		(function() {
+			const element = new Image();
+			Object.defineProperty(element, 'id', {
+				get: function() {
+					document.body.innerHTML = '<h1>Developer Tools are open. Please close them!</h1>';
+				}
+			});
+			console.log(element);
+		})();
+
+	</script>
+	<script>
+		(function() {
+			let devtools = { isOpen: false };
+			const element = new Image();
+			Object.defineProperty(element, 'id', {
+				get: function() {
+					devtools.isOpen = true; // Set to true if the property is accessed
+				}
+			});
+
+			console.log(element); // Trigger the getter
+			setInterval(function() {
+				// If the devtools isOpen property is set to true, alert the user
+				if (devtools.isOpen) {
+					alert("Developer Tools are open. Please close them.");
+					devtools.isOpen = false; // Reset the flag
+				}
+			}, 1000);
+		})();
+
+	</script>
 	
 </body>
 </html>
