@@ -604,64 +604,99 @@ button:focus{
     Gallery
 -------------------------------------------------------------------*/
 
-.gallery-box{
-	padding: 70px 0px;
+@media screen and (max-width: 768px) {
+    .gallery-box ul li {
+        width: 50%; /* 2 items per row on smaller screens */
+        height: 200px; /* Adjust height */
+    }
 }
 
-.gallery-box ul{}
-.gallery-box ul li{
-	position: relative;
-	width: 25%;
-	margin: 0;
-	padding: 0;
-	float: left;
-	border: none;
-	overflow: hidden;
+@media screen and (max-width: 480px) {
+    .gallery-box ul li {
+        width: 100%; /* 1 item per row on mobile */
+        height: 150px; /* Adjust height for mobile */
+    }
 }
-.gallery-box ul li a{
-	position: relative;
-	display: inline-block;
+
+
+/* General gallery box padding */
+.gallery-box {
+    padding: 70px 0px;
+    width: 100%;
 }
-.gallery-box ul li a::before{
-	content: "";
-	position: absolute;
-	background: rgba(99, 199, 189, 0.5);
-	width: 100%;
-	height: 100%;
-	left: 0px;
-	top: 100%;
-	opacity: 0;
-	transition: all 0.3s ease-in-out;
-	-webkit-transition: all 0.3s ease-in-out;
-	-moz-transition: all 0.3s ease-in-out;
-	-o-transition: all 0.3s ease-in-out;
-	-moz-transition: all 0.3s ease-in-out;
+
+/* Styling the unordered list inside gallery-box */
+.gallery-box ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
 }
-.gallery-box ul li a .overlay{
-	background: #dd666c;
-	color: #ffffff;
-	font-size: 22px;
-	text-align: center;
-	width: 38px;
-	height: 38px;
-	display: inline-block;
-	position: absolute;
-	left: 50%;
-	top: 50%;
-	transform: translate(-50%,-50%);
-	opacity: 0;
-	transition: all 0.3s ease-in-out;
-	-webkit-transition: all 0.3s ease-in-out;
-	-moz-transition: all 0.3s ease-in-out;
-	-o-transition: all 0.3s ease-in-out;
-	-moz-transition: all 0.3s ease-in-out;
+
+/* List items inside the gallery */
+.gallery-box ul li {
+    position: relative;
+    width: 25%; /* 4 items per row */
+    margin: 0;
+    padding: 0;
+    display: flex; /* Flexbox for easy centering */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    box-sizing: border-box;
+    flex-grow: 1;
+    height: 350px; /* Set a fixed height for the container */
+    overflow: hidden;
 }
-.gallery-box ul li a:hover::before{
-	top: 0;
-	opacity: 1;
+
+/* Images should scale to fit the container */
+.gallery-box ul li img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Prevent cropping and maintain aspect ratio */
+    display: block;
+    background-color: #f0f0f0; /* Background for empty space */
 }
-.gallery-box ul li a:hover .overlay{
-	opacity: 1;
+
+/* Hover overlay */
+.gallery-box ul li a::before {
+    content: "";
+    position: absolute;
+    background: rgba(99, 199, 189, 0.5);
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 100%;
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+/* The overlay icon styling */
+.gallery-box ul li a .overlay {
+    background: #dd666c;
+    color: #ffffff;
+    font-size: 22px;
+    text-align: center;
+    width: 38px;
+    height: 38px;
+    display: inline-block;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Hover effects for the image */
+.gallery-box ul li a:hover::before {
+    top: 0;
+    opacity: 1;
+}
+
+/* Hover effects for the overlay */
+.gallery-box ul li a:hover .overlay {
+    opacity: 1;
 }
 
 /*------------------------------------------------------------------
