@@ -17,7 +17,7 @@ $email_address = strip_tags(htmlspecialchars($_POST['email']));
 
 // Create the email and send the message
 $to = 'ganakweddingproduct@gmail.com'; // Add your email address inbetween the '' replacing yourname@yourdomain.com - This is where the form will send a message to.
-$email_subject = "Sanket kanse Wedding:  $name";
+$email_subject = "Pranav & Gayatree Wedding:  $name";
 $email_body = "Yes , I'm Attending !!!"."Here are the details:\n\nName: $name\n\nEmail: $email_address";
 $headers = "From: $name\n"; // This is the email address the generated message will be from. We recommend using something like noreply@yourdomain.com.
 $headers .= "Reply-To: $email_address";
