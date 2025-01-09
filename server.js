@@ -13,7 +13,7 @@ const io = require("socket.io")(server);
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Route to serve index1.html for the live wedding stream
-app.get('/live_wedding', (req, res) => {
+app.get('/live', (req, res) => {
   res.sendFile(path.resolve(__dirname, './public/index1.html'));
 });
 
